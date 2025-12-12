@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koo Yoon-mo | Nano-Optoelectronics</title>
+    <title>KOO Research Group | imLAB</title>
     <style>
-        /* 기본 스타일 및 폰트 */
+        /* --- 기본 스타일 --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #444;
-            background-color: #f8f9fa;
-            line-height: 1.7;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* 더 깔끔한 폰트 */
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
             font-size: 16px;
         }
-        a { text-decoration: none; color: #0066cc; }
-        a:hover { text-decoration: underline; }
+        a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
-        strong { font-weight: 600; }
 
-        /* 헤더 (상단 메뉴) */
+        /* --- 헤더 --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            border-bottom: 1px solid #e9ecef;
+            padding: 15px 40px;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
             background: rgba(255, 255, 255, 0.98);
             z-index: 1000;
+            height: 70px;
         }
         .logo-container {
             display: flex;
@@ -37,113 +36,242 @@
             gap: 15px;
             cursor: pointer;
         }
-        .logo-imlab {
-            height: 28px;
-        }
+        .logo-imlab { height: 24px; }
         .logo-name {
             font-size: 1.1rem;
             font-weight: 500;
-            color: #555;
+            color: #444;
             padding-left: 15px;
-            border-left: 2px solid #ccc;
+            border-left: 1px solid #ccc;
+            letter-spacing: 0.5px;
         }
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
-            color: #555;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-            transition: color 0.2s, border-color 0.2s;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s;
         }
-        .nav-links a:hover, .nav-links a.active {
-            color: #000;
-            border-bottom-color: #333;
-        }
+        .nav-links a:hover, .nav-links a.active { color: #000; }
 
-        /* Home 섹션 스타일 (배경 이미지) */
-        #home {
-            display: flex;
-            height: 55vh; /* 배경 이미지의 높이 */
+        /* --- 탭(페이지) 제어 --- */
+        .tab-content { display: none; } /* 기본적으로 숨김 */
+        .tab-content.active { display: block; } /* 활성화 시 보임 */
+
+        /* --- HOME 섹션 --- */
+        /* 히어로 이미지 영역 */
+        .hero-section {
+            width: 100%;
+            height: 60vh;
+            /* ❗️ intel.jpg 파일 경로 확인 */
+            background-image: url('intel.jpg'); 
             background-size: cover;
             background-position: center;
-            /* ❗️ intel.jpg 파일 경로 확인! */
-            background-image: url('intel.jpg');
+            position: relative;
         }
-
-        /* 메인 콘텐츠 영역 (Home이 아닐 때) */
-        .content-wrapper {
-            max-width: 1100px;
-            margin: 40px auto;
-            background-color: #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
-            min-height: calc(100vh - 220px);
+        /* Home 하단 콘텐츠 (Research Themes) */
+        .home-content {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        /* 섹션 공통 스타일 */
-        .section {
-            display: none; /* JS로 active 제어 */
-        }
-        .section.active { display: block; }
-        
-        .content-section {
-             padding: 50px 60px;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
+        .home-title {
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 35px;
-            color: #222;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .home-subtitle {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #000;
+        }
+        .home-desc {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: left;
+            display: inline-block;
+            max-width: 800px;
+        }
+        .home-desc li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .home-desc li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+        }
+        .home-list {
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .home-list li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
-        /* About Me 섹션 */
-        .about-container { display: flex; align-items: flex-start; gap: 40px; }
-        .about-image { flex: 0 0 220px; }
-        .about-image img { width: 100%; border-radius: 6px; }
-        .about-text { flex: 1; }
-        .about-text h3 {
-            font-size: 1.3rem; font-weight: 600;
-            margin-top: 30px; margin-bottom: 15px; color: #333;
+        /* --- ABOUT 섹션 (다크 테마) --- */
+        .about-wrapper {
+            background-color: #333; /* 어두운 배경 */
+            color: #fff;
+            padding: 100px 20px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .about-text p { margin-bottom: 15px; }
-
-        /* Research Interest 섹션 */
-        .list-item { padding: 20px 0; border-bottom: 1px solid #f1f3f5; }
-        .list-item:last-child { border-bottom: none; }
-        .list-item strong {
-            display: block; margin-bottom: 5px; font-size: 1.2rem;
-            color: #333; font-weight: 600;
+        .about-container {
+            max-width: 1000px;
+            width: 100%;
         }
-        .list-item p { color: #555; }
-
-        /* Publications 섹션 */
-        .publication-list li { margin-bottom: 30px; line-height: 1.6; }
-        .publication-list .authors { display: block; margin-bottom: 6px; font-size: 1rem; color: #555; }
-        .publication-list .authors .me { font-weight: 600; color: #000; }
-        .publication-list .title { font-weight: 600; font-size: 1.1rem; color: #111; }
-        .publication-list .journal { font-style: italic; }
-        .publication-list .read-pdf { margin-left: 8px; font-size: 0.9rem; font-weight: 500; color: #c92a2a; }
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .about-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: serif; /* 명조 계열 느낌 */
+        }
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .about-image {
+            flex: 0 0 300px;
+        }
+        .about-image img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+        }
+        .about-info {
+            flex: 1;
+            padding-top: 10px;
+        }
+        .about-role {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        .about-details p {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .about-bio {
+            margin-top: 40px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #eee;
+            text-align: justify;
+        }
         
-        /* Contact 섹션 */
-        #contact p { font-size: 1.1rem; margin-bottom: 10px; }
+        /* --- RESEARCH 섹션 (상세보기 스타일) --- */
+        .research-wrapper {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+        .research-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 40px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .research-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        .research-card p {
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+        .research-card .detail-list {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 15px;
+            color: #666;
+        }
+        .research-card .detail-list li {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
 
-        /* 푸터 */
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #adb5bd; }
-        
-        /* 반응형 */
+        /* --- PUBLICATIONS 섹션 --- */
+        .pub-wrapper {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .pub-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #333;
+        }
+        .pub-authors { color: #555; display: block; margin-bottom: 5px; }
+        .pub-authors .me { font-weight: 700; color: #000; text-decoration: underline; }
+        .pub-title { font-weight: 700; font-size: 1.1rem; color: #000; }
+        .pub-journal { font-style: italic; color: #444; }
+        .pdf-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 2px 8px;
+            background-color: #c92a2a;
+            color: #fff;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .pdf-btn:hover { background-color: #a61e1e; }
+
+        /* --- CONTACT 섹션 --- */
+        .contact-wrapper { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .contact-info p { font-size: 1.2rem; margin-bottom: 15px; }
+
+        /* --- 반응형 --- */
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px 20px; }
-            .content-wrapper { margin: 20px 0; border-radius: 0; }
-            .content-section { padding: 40px 30px; }
-            .about-container { flex-direction: column; }
-            .about-image { width: 60%; margin: 0 auto 30px; }
+            header { flex-direction: column; gap: 15px; height: auto; }
+            .about-content { flex-direction: column; align-items: center; }
+            .about-image { width: 80%; }
+            .about-info { text-align: center; }
+            .about-bio { text-align: left; }
+            .research-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -151,123 +279,221 @@
 
     <header>
         <div class="logo-container">
-            <!-- ❗️ imlab.png 파일 경로 확인! -->
-            <img src="imlab.png" alt="imLAB Logo" class="logo-imlab">
+            <!-- ❗️ imlab.png 파일 경로 확인 -->
+            <img src="imlab.png" alt="imLAB" class="logo-imlab">
             <span class="logo-name">KOO Research Group</span>
         </div>
         <nav class="nav-links">
-            <a data-target="home" class="active">HOME</a>
-            <a data-target="about">ABOUT</a>
-            <a data-target="research">RESEARCH</a>
-            <a data-target="publications">PUBLICATIONS</a>
-            <a data-target="contact">CONTACT</a>
+            <a href="#home" class="active">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#research">RESEARCH</a>
+            <a href="#publications">PUBLICATIONS</a>
+            <a href="#contact">CONTACT</a>
         </nav>
     </header>
 
-    <!-- 홈 섹션 (대문) -->
-    <section id="home" class="section active">
-        <!-- 텍스트 제거 완료 -->
-    </section>
+    <!-- 1. HOME 탭 -->
+    <div id="home" class="tab-content active">
+        <!-- Hero Image (Full Width) -->
+        <div class="hero-section"></div>
+        
+        <!-- Home Content (Research Themes) -->
+        <div class="home-content">
+            <h2 class="home-title">Research Themes:</h2>
+            <h3 class="home-subtitle">Smart Scalable Systems (3S)</h3>
+            
+            <ul class="home-desc">
+                <li>We fabricate Intelligent micro devices by <strong>semiconductor technology</strong>.</li>
+                <li>By using <strong>self-assembly technology</strong> we assemble micro devices for many different <strong>applications</strong>.</li>
+            </ul>
 
-    <!-- 나머지 콘텐츠를 감싸는 래퍼 -->
-    <main class="content-wrapper">
-        <!-- 소개 섹션 -->
-        <section id="about" class="section content-section">
-            <h2 class="section-title">About Me</h2>
+            <ol class="home-list">
+                <li>1. MicroLED display</li>
+                <li>2. Solarcell panel</li>
+                <li>3. Diagnosis Lab on a Chip platform</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 2. ABOUT 탭 (Dark Theme Style) -->
+    <div id="about" class="tab-content">
+        <div class="about-wrapper">
             <div class="about-container">
-                <div class="about-image">
-                    <img src="goood.jpg" alt="Koo Yoon-mo profile picture">
+                <div class="about-header">
+                    <h2>Koo Yoon-mo</h2>
                 </div>
-                <div class="about-text">
-                    <p>안녕하세요, 한양대학교 나노광전자학과 구윤모입니다.<br>저는 Through-Glass Via(TGV) 기반 마이크로LED 패키징, SU-8 고종횡비 구조 제작, Soldering 그리고 Micro LED와 Fluidic Self-Assembly(FSA)를 이용한 대면적 고정밀 전사 기술을 연구하고 있습니다.</p>
-                    <h3>Education</h3>
-                    <p><strong>2025.09 - Current</strong><br>Graduate Student, Department of Photonics and Nanoelectronics, Hanyang University</p>
-                    <p><strong>2021.03 - 2025.02</strong><br>B.S. Electronics Engineering, Myongji University</p>
+                <div class="about-content">
+                    <div class="about-image">
+                        <!-- ❗️ goood.jpg 파일 경로 확인 -->
+                        <img src="goood.jpg" alt="Koo Yoon-mo">
+                    </div>
+                    <div class="about-info">
+                        <div class="about-role">
+                            Graduate Student<br>
+                            Department of Photonics and Nanoelectronics
+                        </div>
+                        <div class="about-details">
+                            <p>Hanyang University, Ansan, Republic of Korea</p>
+                            <p>E-mail: dbsah0426@hanyang.ac.kr</p>
+                        </div>
+                        <div class="about-bio">
+                            <p>
+                                Koo Yoon-mo received a B.S. degree in Electronics Engineering from Myongji University in 2025. 
+                                He is currently pursuing a Master's degree in the Department of Photonics and Nanoelectronics at Hanyang University.
+                                His research interests include Through-Glass Via (TGV) based Micro LED packaging, SU-8 high-aspect-ratio structure fabrication, 
+                                and advanced transfer technologies using Fluidic Self-Assembly (FSA).
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- 연구 분야 섹션 -->
-        <section id="research" class="section content-section">
-            <h2 class="section-title">Research Interest</h2>
-            <div class="list-item"><strong>TGV Metallization & Solder Interface</strong><p>Metallization of TGV substrates and stabilization of solder-electrode interfaces for reliable packaging.</p></div>
-            <div class="list-item"><strong>Micro-structure Design for FSA</strong><p>Chip alignment and capture structure design using SU-8 microstructures for precise assembly.</p></div>
-            <div class="list-item"><strong>Micro LED Transfer Process</strong><p>Optimization of Fluidic Self-Assembly (FSA) based Micro LED transfer processes for large-area displays.</p></div>
-            <div class="list-item"><strong>Optical Alignment System</strong><p>Development of MEMS mirror-based optical alignment systems for advanced optoelectronic integration.</p></div>
-        </section>
+    <!-- 3. RESEARCH 탭 (Detailed Cards) -->
+    <div id="research" class="tab-content">
+        <div class="research-wrapper">
+            <div class="section-header">
+                <h2>Detailed Research Areas</h2>
+            </div>
+            <div class="research-grid">
+                <!-- Research Item 1 -->
+                <div class="research-card">
+                    <h3>TGV Metallization & Interface</h3>
+                    <p>
+                        We are developing advanced metallization techniques for Through-Glass Via (TGV) substrates. 
+                        This research focuses on optimizing the electrical and mechanical properties of the via filling process.
+                    </p>
+                    <ul class="detail-list">
+                        <li>High-quality Cu filling for TGV</li>
+                        <li>Solder-electrode interface stabilization</li>
+                        <li>Reliability testing for advanced packaging</li>
+                    </ul>
+                </div>
 
-        <!-- 논문 섹션 -->
-        <section id="publications" class="section content-section">
-            <h2 class="section-title">Publications</h2>
-            <ul class="publication-list">
-                <li>
-                    <span class="authors">SeoYu Kwak†, <span class="me">YoonMo Koo†</span>, JaeHo Kim†, KyeongMin Ryu†, YeonSu Kim†, Garam Kim, Sang Jeen Hong, and Daewon Lee*</span>
-                    <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003191830" target="_blank" class="title">"Advanced Substrate Design for Resolving Random Orientation Challenges in LED Chip Integration"</a>,
-                    <span class="journal">Journal of the Semiconductor & Display Technology</span> (2025)
-                    <a href="publication.pdf" target="_blank" class="read-pdf">[Read PDF]</a>
-                </li>
-            </ul>
-        </section>
+                <!-- Research Item 2 -->
+                <div class="research-card">
+                    <h3>Micro-structure Design for FSA</h3>
+                    <p>
+                        Precise alignment of micro-components is crucial for next-generation displays. 
+                        We design and fabricate SU-8 microstructures to capture and align chips with high accuracy.
+                    </p>
+                    <ul class="detail-list">
+                        <li>SU-8 High-aspect-ratio structures</li>
+                        <li>Fluidic Self-Assembly (FSA) receptor design</li>
+                        <li>Hydrodynamic simulation and optimization</li>
+                    </ul>
+                </div>
 
-        <!-- 연락처 섹션 -->
-        <section id="contact" class="section content-section">
-            <h2 class="section-title">Contact</h2>
-            <p>Email: <strong>dbsah0426@hanyang.ac.kr</strong></p>
-            <p>Lab: <strong>Building of Science and Technology II Room 503</strong></p>
-        </section>
-    </main>
+                <!-- Research Item 3 -->
+                <div class="research-card">
+                    <h3>Micro LED Transfer Process</h3>
+                    <p>
+                        To realize large-area Micro LED displays, we are optimizing the Fluidic Self-Assembly (FSA) process. 
+                        This technology enables massive parallel assembly of LED chips.
+                    </p>
+                    <ul class="detail-list">
+                        <li>High-yield transfer technology</li>
+                        <li>Defect repair mechanisms</li>
+                        <li>Large-area substrate integration</li>
+                    </ul>
+                </div>
 
-    <footer>
-        <p>&copy; 2025 Koo Yoon-mo. All Rights Reserved.</p>
-    </footer>
+                <!-- Research Item 4 -->
+                <div class="research-card">
+                    <h3>Optical Alignment System</h3>
+                    <p>
+                        Development of MEMS mirror-based optical alignment systems for precise integration of optoelectronic devices.
+                    </p>
+                    <ul class="detail-list">
+                        <li>MEMS mirror control</li>
+                        <li>Active optical alignment</li>
+                        <li>Automated assembly systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- 4. PUBLICATIONS 탭 -->
+    <div id="publications" class="tab-content">
+        <div class="pub-wrapper">
+            <div class="section-header"><h2>Publications</h2></div>
+            <div class="pub-item">
+                <span class="pub-authors">
+                    SeoYu Kwak†, <span class="me">YoonMo Koo†</span>, JaeHo Kim†, KyeongMin Ryu†, YeonSu Kim†, Garam Kim, Sang Jeen Hong, and Daewon Lee*
+                </span>
+                <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003191830" target="_blank" class="pub-title">
+                    "Advanced Substrate Design for Resolving Random Orientation Challenges in LED Chip Integration"
+                </a>,
+                <span class="pub-journal">Journal of the Semiconductor & Display Technology (2025)</span>
+                <!-- ❗️ publication.pdf 파일 경로 확인 -->
+                <a href="publication.pdf" target="_blank" class="pdf-btn">PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CONTACT 탭 -->
+    <div id="contact" class="tab-content">
+        <div class="contact-wrapper">
+            <div class="section-header"><h2>Contact</h2></div>
+            <div class="contact-info">
+                <p>Email: <strong>dbsah0426@hanyang.ac.kr</strong></p>
+                <p>Lab: <strong>Building of Science and Technology II Room 503</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const navLinks = document.querySelectorAll('.nav-links a');
-            const homeSection = document.getElementById('home');
-            const contentWrapper = document.querySelector('.content-wrapper');
-            const allSections = document.querySelectorAll('.section');
+            const contents = document.querySelectorAll('.tab-content');
+            const logoContainer = document.querySelector('.logo-container');
 
-            function switchTab(targetId) {
-                // 모든 섹션 숨기고, 메뉴 비활성화
-                allSections.forEach(section => section.classList.remove('active'));
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
+            function activateTab(targetId) {
+                // 1. 모든 탭 컨텐츠 숨기기
+                contents.forEach(content => content.classList.remove('active'));
+                // 2. 모든 네비게이션 활성화 상태 제거
+                navLinks.forEach(link => link.classList.remove('active'));
 
-                // 클릭한 메뉴 활성화
-                const targetLink = document.querySelector(`.nav-links a[data-target="${targetId}"]`);
-                if (targetLink) targetLink.classList.add('active');
-
-                if (targetId === 'home') {
-                    // Home 탭일 경우: Home 섹션을 보여주고, 메인 콘텐츠 래퍼를 숨김
-                    homeSection.classList.add('active');
-                    contentWrapper.style.display = 'none';
-                } else {
-                    // 다른 탭일 경우: Home 섹션을 숨기고, 메인 콘텐츠 래퍼를 보여줌
-                    homeSection.classList.remove('active');
-                    contentWrapper.style.display = 'block';
-                    // 해당 콘텐츠 섹션만 보여줌
-                    const targetContentSection = document.getElementById(targetId);
-                    if (targetContentSection) targetContentSection.classList.add('active');
+                // 3. 타겟 컨텐츠 보여주기 (id 값에서 # 제거)
+                const id = targetId.replace('#', '');
+                const targetContent = document.getElementById(id);
+                if (targetContent) {
+                    targetContent.classList.add('active');
                 }
+
+                // 4. 해당 네비게이션 링크 활성화
+                const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+                
+                // 5. 스크롤 최상단으로 이동
+                window.scrollTo(0, 0);
             }
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const targetId = this.getAttribute('data-target');
-                    switchTab(targetId);
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    activateTab(targetId);
                 });
             });
 
-            document.querySelector('.logo-container').addEventListener('click', function(event) {
-                event.preventDefault();
-                switchTab('home');
+            logoContainer.addEventListener('click', function() {
+                activateTab('#home');
             });
 
-            // 초기 로딩 시 'home'을 기본으로 설정
-            switchTab('home');
+            // 초기 로드 시 해시가 있으면 해당 탭, 없으면 home
+            const hash = window.location.hash;
+            if(hash) {
+                activateTab(hash);
+            } else {
+                activateTab('#home');
+            }
         });
     </script>
-
 </body>
 </html>
