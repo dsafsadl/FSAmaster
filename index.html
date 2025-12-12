@@ -32,6 +32,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: -0.5px;
+            text-transform: uppercase;
         }
         .nav-links {
             display: flex;
@@ -41,10 +42,10 @@
         }
         .nav-links a:hover { color: #000; }
 
-        /* 메인 히어로 섹션 (이미지 슬라이드 느낌) */
+        /* 메인 히어로 섹션 */
         .hero {
-            height: 60vh; /* 화면 높이의 60% */
-            background-color: #f8f9fa; /* 옅은 회색 배경 (이미지 대신) */
+            height: 60vh;
+            background-color: #f8f9fa;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -54,7 +55,7 @@
         }
         .hero h1 {
             font-size: 2.5rem;
-            font-weight: 300; /* 얇은 글씨 */
+            font-weight: 300;
             margin-bottom: 15px;
         }
         .hero p {
@@ -66,26 +67,37 @@
         /* 콘텐츠 섹션 공통 */
         .section {
             padding: 80px 40px;
-            max-width: 1200px; /* 너무 넓어지지 않게 제한 */
+            max-width: 1200px;
             margin: 0 auto;
         }
         .section-title {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 40px;
-            border-left: 4px solid #333; /* 왼쪽에 강조 선 */
+            border-left: 4px solid #333;
             padding-left: 15px;
         }
 
-        /* 뉴스/연구 리스트 스타일 (심플하게) */
+        /* 뉴스/연구 리스트 스타일 */
         .news-item {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #eee;
             padding: 20px 0;
+            align-items: flex-start;
         }
-        .news-date { color: #888; font-size: 0.9rem; min-width: 100px; }
+        .news-date { 
+            color: #888; 
+            font-size: 0.9rem; 
+            min-width: 140px; /* 너비 조금 늘림 */
+            font-weight: 500;
+        }
         .news-content { flex: 1; }
+        .news-content strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
 
         /* 푸터 */
         footer {
@@ -102,6 +114,8 @@
             .hero h1 { font-size: 1.8rem; }
             .nav-links { gap: 15px; font-size: 0.8rem; }
             .section { padding: 50px 20px; }
+            .news-item { flex-direction: column; }
+            .news-date { margin-bottom: 5px; }
         }
     </style>
 </head>
@@ -109,7 +123,7 @@
 
     <!-- 상단 메뉴 -->
     <header>
-        <div class="logo">KOO YUN-MO</div>
+        <div class="logo">KOO YOON-MO</div>
         <nav>
             <ul class="nav-links">
                 <li><a href="#about">ABOUT</a></li>
@@ -120,7 +134,7 @@
         </nav>
     </header>
 
-    <!-- 메인 타이틀 영역 (imlab 처럼 깔끔하게) -->
+    <!-- 메인 타이틀 영역 -->
     <section class="hero">
         <h1>Nano-Optoelectronics Lab</h1>
         <p>Advanced Research on Nanomaterials & Optoelectronic Devices</p>
@@ -130,53 +144,71 @@
     <section id="about" class="section">
         <h2 class="section-title">About Me</h2>
         <p style="line-height: 1.8; color: #444;">
-        안녕하세요, 한양대학교 나노광전자학과 구윤모입니다.
-        저는 Through-Glass Via(TGV) 기반 마이크로LED 패키징, SU-8 고종횡비 구조 제작,Soldering
+        안녕하세요, 한양대학교 나노광전자학과 구윤모입니다.<br>
+        저는 Through-Glass Via(TGV) 기반 마이크로LED 패키징, SU-8 고종횡비 구조 제작, Soldering
         그리고 Micro LED와 Fluidic Self-Assembly(FSA)를 이용한 대면적 고정밀 전사 기술을 연구하고 있습니다.
-
-
         </p>
     </section>
 
-    <!-- 연구 분야 (그리드 형태 대신 리스트 형태로 깔끔하게 변경) -->
+    <!-- 연구 분야 (수정된 내용 반영) -->
     <section id="research" class="section">
         <h2 class="section-title">Research Interest</h2>
+        
         <div class="news-item">
             <span class="news-date">Topic 01</span>
-            <div class="news-content"><strong>Nano-Photonics</strong> <br> 나노 구조물을 이용한 빛의 제어 및 응용</div>
+            <div class="news-content">
+                <strong>TGV Metallization & Solder Interface</strong>
+                Metallization of TGV substrates and stabilization of solder-electrode interfaces for reliable packaging.
+            </div>
         </div>
+
         <div class="news-item">
             <span class="news-date">Topic 02</span>
-            <div class="news-content"><strong>Semiconductor Devices</strong> <br> 차세대 반도체 소자 공정 및 특성 분석</div>
+            <div class="news-content">
+                <strong>Micro-structure Design for FSA</strong>
+                Chip alignment and capture structure design using SU-8 microstructures for precise assembly.
+            </div>
         </div>
+
         <div class="news-item">
             <span class="news-date">Topic 03</span>
-            <div class="news-content"><strong>Optoelectronic Systems</strong> <br> 고효율 광전 변환 시스템 설계</div>
+            <div class="news-content">
+                <strong>Micro LED Transfer Process</strong>
+                Optimization of Fluidic Self-Assembly (FSA) based Micro LED transfer processes for large-area displays.
+            </div>
+        </div>
+
+        <div class="news-item">
+            <span class="news-date">Topic 04</span>
+            <div class="news-content">
+                <strong>Optical Alignment System</strong>
+                Development of MEMS mirror-based optical alignment systems for advanced optoelectronic integration.
+            </div>
         </div>
     </section>
 
-    <!-- 최신 소식 (imlab의 News 섹션 느낌) -->
+    <!-- 최신 소식 -->
     <section id="publications" class="section">
         <h2 class="section-title">Recent News</h2>
         <div class="news-item">
             <span class="news-date">2024.12</span>
-            <div class="news-content">개인 홈페이지 오픈 (GitHub Pages)</div>
+            <div class="news-content">Personal Website Opened (GitHub Pages)</div>
         </div>
         <div class="news-item">
             <span class="news-date">2024.10</span>
-            <div class="news-content">국제 학술대회 발표 (International Conference on Nano-Science)</div>
+            <div class="news-content">Presentation at International Conference on Nano-Science</div>
         </div>
     </section>
 
     <!-- 연락처 -->
     <section id="contact" class="section">
         <h2 class="section-title">Contact</h2>
-        <p>Email: <strong>your-email@example.com</strong></p>
-        <p>Lab: Science Building, Room 101</p>
+        <p>Email: <strong>dbsah0426@hanyang.ac.kr</strong></p>
+        <p>Lab: Building of Science and Technology II Room 503</p>
     </section>
 
     <footer>
-        <p>&copy; 2024 Koo Yun-mo. All Rights Reserved.</p>
+        <p>&copy; 2025 Koo Yoon-mo. All Rights Reserved.</p>
     </footer>
 
 </body>
