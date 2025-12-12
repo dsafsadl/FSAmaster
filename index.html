@@ -107,6 +107,34 @@
             color: #999;
             border-top: 1px solid #eee;
         }
+        
+        /* --- About Me 섹션 스타일 (추가) --- */
+        .about-container {
+            display: flex;
+            align-items: flex-start; /* 세로 상단 정렬 */
+            gap: 40px; /* 이미지와 텍스트 사이 간격 */
+        }
+        .about-image {
+            flex: 0 0 200px; /* 이미지 너비 200px로 고정 */
+            text-align: center;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 5px; /* 이미지 모서리를 살짝 둥글게 */
+        }
+        .about-text {
+            flex: 1; /* 남은 공간을 모두 차지 */
+        }
+        .about-text h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .about-text p {
+            color: #555;
+            margin-bottom: 10px;
+        }
 
         /* 반응형 (모바일) */
         @media (max-width: 768px) {
@@ -116,6 +144,17 @@
             .section { padding: 50px 20px; }
             .news-item { flex-direction: column; }
             .news-date { margin-bottom: 5px; }
+
+            /* --- 반응형 About Me 스타일 --- */
+            .about-container {
+                flex-direction: column; /* 모바일에서는 세로로 쌓기 */
+                gap: 30px;
+            }
+            .about-image {
+                flex: 0 0 auto; /* 너비 고정 해제 */
+                width: 60%; /* 화면 너비의 60% 차지 */
+                margin: 0 auto; /* 가운데 정렬 */
+            }
         }
     </style>
 </head>
@@ -140,14 +179,36 @@
         <p>Advanced Research on Nanomaterials & Optoelectronic Devices</p>
     </section>
 
-    <!-- 소개 섹션 -->
+    <!-- 소개 섹션 (수정된 버전) -->
     <section id="about" class="section">
         <h2 class="section-title">About Me</h2>
-        <p style="line-height: 1.8; color: #444;">
-        안녕하세요, 한양대학교 나노광전자학과 구윤모입니다.<br>
-        저는 Through-Glass Via(TGV) 기반 마이크로LED 패키징, SU-8 고종횡비 구조 제작, Soldering
-        그리고 Micro LED와 Fluidic Self-Assembly(FSA)를 이용한 대면적 고정밀 전사 기술을 연구하고 있습니다.
-        </p>
+        
+        <div class="about-container">
+            <!-- 왼쪽: 프로필 사진 -->
+            <div class="about-image">
+                <!-- 이미지 경로를 "취업사진.jpg"로 수정했습니다 -->
+                <img src="취업사진.jpg" alt="Koo Yoon-mo profile picture">
+            </div>
+
+            <!-- 오른쪽: 텍스트 정보 -->
+            <div class="about-text">
+                <p>
+                    안녕하세요, 한양대학교 나노광전자학과 구윤모입니다.<br>
+                    저는 Through-Glass Via(TGV) 기반 마이크로LED 패키징, SU-8 고종횡비 구조 제작, Soldering
+                    그리고 Micro LED와 Fluidic Self-Assembly(FSA)를 이용한 대면적 고정밀 전사 기술을 연구하고 있습니다.
+                </p>
+
+                <h3>Education</h3>
+                <p>
+                    <strong>2025.09 - Current</strong><br>
+                    Graduate Student, Department of Photonics and Nanoelectronics, Hanyang University
+                </p>
+                <p>
+                    <strong>2021.03 - 2025.02</strong><br>
+                    B.S. Electronics Engineering, Myongji University
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- 연구 분야 (수정된 내용 반영) -->
