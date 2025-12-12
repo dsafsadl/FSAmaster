@@ -67,21 +67,12 @@
 
         /* Home 섹션 스타일 (배경 이미지) */
         #home {
-            display: flex; /* JS에서 active 클래스가 붙으면 보이도록 함 */
-            height: 55vh;
-            color: #fff;
+            display: flex;
+            height: 55vh; /* 배경 이미지의 높이 */
             background-size: cover;
             background-position: center;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             /* ❗️ intel.jpg 파일 경로 확인! */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('intel.jpg');
-        }
-        .hero-text h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            background-image: url('intel.jpg');
         }
 
         /* 메인 콘텐츠 영역 (Home이 아닐 때) */
@@ -153,7 +144,6 @@
             .content-section { padding: 40px 30px; }
             .about-container { flex-direction: column; }
             .about-image { width: 60%; margin: 0 auto 30px; }
-            .hero-text h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -176,9 +166,7 @@
 
     <!-- 홈 섹션 (대문) -->
     <section id="home" class="section active">
-        <div class="hero-text">
-            <h1>Intelligent Microsystems<br>Laboratory</h1>
-        </div>
+        <!-- 텍스트 제거 완료 -->
     </section>
 
     <!-- 나머지 콘텐츠를 감싸는 래퍼 -->
