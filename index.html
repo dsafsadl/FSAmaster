@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koo Yoon-mo | Nano-Optoelectronics</title>
     <style>
-        /* 기본 스타일 및 폰트 */
+        /* 기본 스타일 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -19,7 +19,7 @@
         ul { list-style: none; }
         strong { font-weight: 600; }
 
-        /* 헤더 (상단 메뉴) */
+        /* 헤더 */
         header {
             display: flex;
             justify-content: space-between;
@@ -60,23 +60,21 @@
             border-bottom-color: #333;
         }
 
-        /* --- Home 섹션 스타일 --- */
+        /* --- Home 섹션 --- */
         #home { display: none; flex-direction: column; width: 100%; }
         #home.active { display: flex; }
 
-        /* 1. 홈 히어로 이미지 (텍스트 없음) */
         .home-hero {
             width: 100%;
             height: 55vh;
             background-size: cover;
             background-position: center;
-            /* ❗️ intel.jpg 파일 경로 확인 */
-            background-image: url('intel.jpg');
+            /* ✅ 이미지를 폴더 안에서 찾도록 수정함 */
+            background-image: url('images/intel.jpg');
         }
 
-        /* 2. 홈 하단 설명 영역 */
         .home-intro {
-            padding: 60px 20px 40px; /* 아래쪽 여백 줄임 */
+            padding: 60px 20px 40px;
             text-align: center;
             background-color: #fff;
         }
@@ -97,10 +95,9 @@
             line-height: 1.8;
         }
 
-        /* 3. 홈 이미지 갤러리 (가로 배치) */
         .home-gallery {
             background-color: #fff;
-            padding: 0 20px 80px; /* 위쪽 여백 없음, 아래쪽 여백 */
+            padding: 0 20px 80px;
             display: flex;
             justify-content: center;
         }
@@ -112,7 +109,7 @@
             gap: 20px;
         }
         .gallery-item {
-            flex: 1; /* 3등분 */
+            flex: 1;
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -120,15 +117,15 @@
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 비율 유지하며 꽉 채우기 */
+            object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
         }
         .gallery-item img:hover {
-            transform: scale(1.05); /* 마우스 올리면 살짝 확대 */
+            transform: scale(1.05);
         }
 
-        /* --- 메인 콘텐츠 래퍼 (About, Research 등) --- */
+        /* --- 콘텐츠 래퍼 --- */
         .content-wrapper {
             max-width: 1100px;
             margin: 40px auto;
@@ -139,7 +136,6 @@
             min-height: 60vh;
         }
 
-        /* 섹션 공통 스타일 */
         .section { display: none; padding: 50px 60px; }
         .section.active { display: block; }
         .section-title {
@@ -151,7 +147,7 @@
             padding-bottom: 15px;
         }
 
-        /* About Me 섹션 (프로필 스타일) */
+        /* About 섹션 */
         .about-container { display: flex; align-items: flex-start; gap: 50px; }
         .about-image { flex: 0 0 240px; }
         .about-image img { width: 100%; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
@@ -159,7 +155,6 @@
         .about-header { margin-bottom: 25px; }
         .about-header h3 { font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 5px; }
         .about-header .role { font-size: 1.1rem; color: #666; font-weight: 500; }
-        
         .about-details { font-size: 1.05rem; line-height: 1.8; color: #333; }
         .about-details p { margin-bottom: 20px; text-align: justify; }
         .contact-info {
@@ -170,7 +165,7 @@
             color: #555;
         }
 
-        /* Research Interest 섹션 */
+        /* Research 섹션 */
         .research-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -184,9 +179,7 @@
             transition: transform 0.2s;
         }
         .research-item:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .research-item h3 {
-            font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 10px;
-        }
+        .research-item h3 { font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 10px; }
         .research-item p { color: #555; font-size: 1rem; }
 
         /* Publications 섹션 */
@@ -200,10 +193,8 @@
         /* Contact 섹션 */
         #contact p { font-size: 1.1rem; margin-bottom: 15px; }
 
-        /* 푸터 */
         footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #adb5bd; }
         
-        /* 반응형 */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 15px 20px; }
             .home-hero { height: 35vh; }
@@ -213,7 +204,6 @@
             .about-image { width: 70%; margin: 0 auto 30px; }
             .home-intro h2 { font-size: 1.5rem; }
             .home-intro p { font-size: 1.1rem; }
-            /* 모바일에서 갤러리 이미지를 세로로 쌓으려면 아래 주석 해제 */
             .gallery-container { flex-direction: column; }
         }
     </style>
@@ -222,8 +212,8 @@
 
     <header>
         <div class="logo-container">
-            <!-- ❗️ imlab.png 파일 경로 확인 -->
-            <img src="imlab.png" alt="imLAB Logo" class="logo-imlab">
+            <!-- ✅ 이미지 경로 수정됨 -->
+            <img src="images/imlab.png" alt="imLAB Logo" class="logo-imlab">
             <span class="logo-name">KOO Research Group</span>
         </div>
         <nav class="nav-links">
@@ -235,11 +225,8 @@
         </nav>
     </header>
 
-    <!-- 1. HOME 섹션 (전체 너비 배경 + 하단 설명 + 이미지 갤러리) -->
     <section id="home" class="active">
-        <div class="home-hero">
-            <!-- 배경 이미지 영역 (텍스트 없음) -->
-        </div>
+        <div class="home-hero"></div>
         <div class="home-intro">
             <div class="home-intro-content">
                 <h2>Research Overview</h2>
@@ -250,34 +237,31 @@
                 </p>
             </div>
         </div>
-        <!-- 새로 추가된 이미지 갤러리 영역 -->
         <div class="home-gallery">
             <div class="gallery-container">
                 <div class="gallery-item">
-                    <!-- ❗️ home1.png 파일 업로드 필수 -->
-                    <img src="home1.png" alt="Research Image 1">
+                    <!-- ✅ 이미지 경로 수정됨 -->
+                    <img src="images/home1.png" alt="Research Image 1">
                 </div>
                 <div class="gallery-item">
-                    <!-- ❗️ home2.png 파일 업로드 필수 -->
-                    <img src="home2.png" alt="Research Image 2">
+                    <!-- ✅ 이미지 경로 수정됨 -->
+                    <img src="images/home2.png" alt="Research Image 2">
                 </div>
                 <div class="gallery-item">
-                    <!-- ❗️ home3.png 파일 업로드 필수 -->
-                    <img src="home3.png" alt="Research Image 3">
+                    <!-- ✅ 이미지 경로 수정됨 -->
+                    <img src="images/home3.png" alt="Research Image 3">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. 나머지 콘텐츠 래퍼 (About, Research, Publications, Contact) -->
     <main class="content-wrapper">
-        
-        <!-- About 섹션 -->
         <section id="about" class="section">
             <h2 class="section-title">About Me</h2>
             <div class="about-container">
                 <div class="about-image">
-                    <img src="goood.jpg" alt="Koo Yoon-mo">
+                    <!-- ✅ 이미지 경로 수정됨 -->
+                    <img src="images/goood.jpg" alt="Koo Yoon-mo">
                 </div>
                 <div class="about-text">
                     <div class="about-header">
@@ -301,7 +285,6 @@
             </div>
         </section>
 
-        <!-- Research 섹션 -->
         <section id="research" class="section">
             <h2 class="section-title">Research Interests</h2>
             <div class="research-grid">
@@ -324,7 +307,6 @@
             </div>
         </section>
 
-        <!-- Publications 섹션 -->
         <section id="publications" class="section">
             <h2 class="section-title">Publications</h2>
             <ul class="publication-list">
@@ -332,12 +314,12 @@
                     <span class="authors">SeoYu Kwak†, <span class="me">YoonMo Koo†</span>, JaeHo Kim†, KyeongMin Ryu†, YeonSu Kim†, Garam Kim, Sang Jeen Hong, and Daewon Lee*</span>
                     <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003191830" target="_blank" class="title">"Advanced Substrate Design for Resolving Random Orientation Challenges in LED Chip Integration"</a>,
                     <span class="journal">Journal of the Semiconductor & Display Technology</span> (2025)
-                    <a href="publication.pdf" target="_blank" class="read-pdf">[Read PDF]</a>
+                    <!-- ✅ PDF 경로 수정됨 -->
+                    <a href="pdf/publication.pdf" target="_blank" class="read-pdf">[Read PDF]</a>
                 </li>
             </ul>
         </section>
 
-        <!-- Contact 섹션 -->
         <section id="contact" class="section">
             <h2 class="section-title">Contact</h2>
             <p><strong>Email:</strong> dbsah0426@hanyang.ac.kr</p>
@@ -357,21 +339,17 @@
             const allSections = document.querySelectorAll('.section');
 
             function switchTab(targetId) {
-                // 모든 섹션 비활성화 및 메뉴 초기화
                 allSections.forEach(section => section.classList.remove('active'));
                 navLinks.forEach(navLink => navLink.classList.remove('active'));
                 homeSection.classList.remove('active');
 
-                // 해당 메뉴 활성화
                 const targetLink = document.querySelector(`.nav-links a[data-target="${targetId}"]`);
                 if (targetLink) targetLink.classList.add('active');
 
                 if (targetId === 'home') {
-                    // Home 모드: 히어로 이미지 + 인트로 표시, 나머지 숨김
                     homeSection.classList.add('active');
                     contentWrapper.style.display = 'none';
                 } else {
-                    // 콘텐츠 모드: Home 숨김, 래퍼 표시, 해당 섹션 표시
                     contentWrapper.style.display = 'block';
                     const targetContentSection = document.getElementById(targetId);
                     if (targetContentSection) targetContentSection.classList.add('active');
@@ -391,7 +369,6 @@
                 switchTab('home');
             });
 
-            // 초기 로딩 시 Home 탭 활성화
             switchTab('home');
         });
     </script>
